@@ -1,0 +1,8 @@
+c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\bin\Release\GetHAMContactInfo.exe
+c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\bin\Release\GetHAMContactInfo.pdb
+c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Form1.resources
+c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.PageSource.resources
+c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Properties.Resources.resources
+c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.csproj.GenerateResource.Cache
+c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.exe
+c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.pdb
