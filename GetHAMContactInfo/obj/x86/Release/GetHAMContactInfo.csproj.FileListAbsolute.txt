@@ -6,3 +6,14 @@ c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\Get
 c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.csproj.GenerateResource.Cache
 c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.exe
 c:\users\mjurmo10.s2\documents\visual studio 2010\Projects\GetHAMContactInfo\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.pdb
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.exe
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.pdb
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\bin\Release\GetHAMContactInfo.exe
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\bin\Release\GetHAMContactInfo.pdb
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.PageSource.resources
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Properties.Resources.resources
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.csproj.GenerateResource.Cache
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Associates.resources
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.AssociateLookup.resources
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Main.resources
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.csprojResolveAssemblyReference.cache

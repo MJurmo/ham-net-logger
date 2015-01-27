@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,27 +13,27 @@ using System.IO;
 
 namespace GetHAMContactInfo
 {
-    public partial class Form1 : Form
+    public partial class AssociateLookup : Form
     {
+        
         bool gettingname = false;
         bool gettingcoordinants = false;
         HtmlDocument m_doc=null;
         bool loggedin = false;
+        private string m_ID="";
         //WebClient client = new WebClient();
-        public Form1()
+        public AssociateLookup(string ID)
         {
             InitializeComponent();
             try
             {
                 webBrowser1.Navigate("http://www.Qrz.com");
-                
-                return;
+                m_ID = ID;
             }
             catch (WebException err)
             {
                 MessageBox.Show(err.Message);
             }
-            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -176,20 +177,57 @@ namespace GetHAMContactInfo
                     txtPassword.Enabled = false;
                     btnLogon.Text = "Logged On!";
                     btnLogon.Enabled = false;
+                    Lookup(ele);
                 }
-                ele.SetAttribute("value", textBox1.Text);
-                ele = getElement("INPUT", "value","Search");
-                if (ele != null)
-                {
-                    ele.InvokeMember("click");
-                    gettingname = true;
-                }
+                
+            }
+        }
+
+        private void Lookup(HtmlElement ele)
+        {
+            if (m_ID != "")
+            {
+                textBox1.Text = m_ID;
+                textBox1.Enabled = false;
+            }
+            ele.SetAttribute("value", textBox1.Text);
+            ele = getElement("INPUT", "value", "Search");
+            if (ele != null)
+            {
+                ele.InvokeMember("click");
+                gettingname = true;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Don't know where to save yet!");
+            
+            if (m_ID != "")
+            {
+                AssociatesController.GetDataSet().AcceptChanges();
+                DataRow[] associateRow = AssociatesController.GetDataSet().Tables[0].Select("ID = '" + m_ID + "'");
+
+                associateRow[0]["name"] = txtName.Text;
+                associateRow[0]["address"] = txtAddress.Text;
+                associateRow[0]["city-state-zip"] = txtCity.Text;
+                associateRow[0]["country"] = txtCountry.Text;
+                associateRow[0]["class"] = txtClass.Text;
+                associateRow[0]["latitude"] = txtLatitude.Text;
+                associateRow[0]["longitude"] = txtLongitude.Text;
+                associateRow[0]["email"] = txtEmail.Text;
+                associateRow[0]["birthdate"] = txtBorn.Text;
+                associateRow[0]["bearing"] = txtBearing.Text;
+                associateRow[0]["distance"] = txtDistance.Text;
+                associateRow[0]["us-county"] = txtUSCounty.Text;
+                associateRow[0]["us-state"] = txtUSState.Text;
+                associateRow[0]["grid-square"] = txtGridSquare.Text;
+                AssociatesController.GetDataSet().AcceptChanges();
+            }
+            else
+            {
+                MessageBox.Show("No ID!");
+            }
+            this.Close();
         }
         private void checkLogin()
         {
@@ -221,6 +259,7 @@ namespace GetHAMContactInfo
                     txtPassword.Enabled = false;
                     btnLogon.Text = "Logged On!";
                     btnLogon.Enabled = false;
+                    Lookup(ele);
                     return;
                 }
             }
@@ -230,6 +269,11 @@ namespace GetHAMContactInfo
         {
 
             checkLogin();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
