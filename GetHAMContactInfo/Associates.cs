@@ -35,8 +35,8 @@ namespace GetHAMContactInfo
 
         private void gridAssociates_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            Form AssociateLookup = new AssociateLookup(gridAssociates.Rows[((DataGridView)sender).SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
+
+            Form AssociateLookup = new AssociateLookup(gridAssociates.Rows[((DataGridView)sender).SelectedCells[0].RowIndex].Cells["ID"].EditedFormattedValue.ToString());
             AssociateLookup.Show();
 
         }

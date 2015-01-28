@@ -84,13 +84,13 @@
             // webBrowser1
             // 
             this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.webBrowser1.Location = new System.Drawing.Point(-442, 0);
+            this.webBrowser1.Location = new System.Drawing.Point(-134, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(868, 563);
+            this.webBrowser1.Size = new System.Drawing.Size(549, 563);
             this.webBrowser1.TabIndex = 2;
             this.webBrowser1.Visible = false;
-            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // btnCurrELEM
             // 
@@ -415,7 +415,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 563);
+            this.ClientSize = new System.Drawing.Size(415, 563);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btnLogon);

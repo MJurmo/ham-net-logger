@@ -20,7 +20,11 @@ namespace GetHAMContactInfo
         bool gettingcoordinants = false;
         HtmlDocument m_doc=null;
         bool loggedin = false;
+        private bool waiting_for_credentials = false;
         private string m_ID="";
+        private string username, password;
+        private bool autorun = false;
+        private MessageBox invalidLogin;
         //WebClient client = new WebClient();
         public AssociateLookup(string ID)
         {
@@ -29,6 +33,7 @@ namespace GetHAMContactInfo
             {
                 webBrowser1.Navigate("http://www.Qrz.com");
                 m_ID = ID;
+                textBox1.Text = ID;
             }
             catch (WebException err)
             {
@@ -56,82 +61,7 @@ namespace GetHAMContactInfo
 
         private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
-            if (m_doc != webBrowser1.Document)
-            {
-                m_doc = webBrowser1.Document;
-            }
             
-            checkLogin();
-            if (gettingname)
-            {
-                HtmlElement ele = null;
-                ele = m_doc.GetElementById("csdata");
-                if (ele != null)
-                {
-                    HtmlElementCollection collect = ele.GetElementsByTagName("P");
-                    string address = collect[0].InnerHtml;
-                    txtName.Text = collect[0].InnerHtml.Substring(0, address.IndexOf("<"));
-                    address = address.Substring(address.IndexOf(txtName.Text));
-                    address = address.Substring(address.IndexOf("SPAN><BR>") + 9);
-                    txtAddress.Text = address.Substring(0, address.IndexOf("<BR>"));
-                    address = address.Trim(txtAddress.Text.ToCharArray());
-                    string trimstr = "<BR>";
-                    address = address.Substring(address.IndexOf(trimstr)+4);
-                    txtCity.Text = address.Substring(0, address.IndexOf("<BR>"));
-                    address = address.Substring(address.IndexOf(txtCity.Text));
-                    address = address.Substring(address.IndexOf(trimstr));
-                    txtCountry.Text = collect[0].InnerHtml.Substring(collect[0].InnerHtml.LastIndexOf("<BR>") + 4);
-                    HtmlElement email = m_doc.GetElementById("qem");
-                    if (email != null)
-                    {
-                        
-                        email.InvokeMember("click");
-                        txtEmail.Text=email.InnerText;
-                    }
-                    gettingname = false;
-                }
-                
-                HtmlElementCollection coll = m_doc.GetElementsByTagName("TR");
-                foreach (HtmlElement ele2 in coll)
-                {
-                    HtmlElementCollection innerCollection = ele2.GetElementsByTagName("TD");
-                    if (innerCollection.Count==2)
-                    {
-                        switch(innerCollection[0].InnerText)
-                        {
-                            case "Class":
-                                txtClass.Text = innerCollection[1].InnerText;
-                                break;
-                            case "Grid Square":
-                                txtGridSquare.Text = innerCollection[1].InnerText;
-                                break;
-                            case "US State":
-                                txtUSState.Text = innerCollection[1].InnerText;
-                                break;
-                            case "US County":
-                                txtUSCounty.Text = innerCollection[1].InnerText;
-                                break;
-                            case "Bearing":
-                                txtBearing.Text = innerCollection[1].InnerText;
-                                break;
-                            case "Distance":
-                                txtDistance.Text = innerCollection[1].InnerText;
-                                break;
-                            case "Latitude":
-                                txtLatitude.Text = innerCollection[1].InnerText;
-                                break;
-                            case "Longitude":
-                                txtLongitude.Text = innerCollection[1].InnerText;
-                                break;
-                            case "Born":
-                                txtBorn.Text = innerCollection[1].InnerText;
-                                break;
-                            default:
-                                break;
-                        }                        
-                    }
-                }
-            }
         }
         private HtmlElement getElement(string type, string attribute,string elementname)
         {
@@ -185,17 +115,16 @@ namespace GetHAMContactInfo
 
         private void Lookup(HtmlElement ele)
         {
-            if (m_ID != "")
+            
+            if (textBox1.Text != "")
             {
-                textBox1.Text = m_ID;
-                textBox1.Enabled = false;
-            }
-            ele.SetAttribute("value", textBox1.Text);
-            ele = getElement("INPUT", "value", "Search");
-            if (ele != null)
-            {
-                ele.InvokeMember("click");
-                gettingname = true;
+                ele.SetAttribute("value", textBox1.Text);
+                ele = getElement("INPUT", "value", "Search");
+                if (ele != null)
+                {
+                    ele.InvokeMember("click");
+                    gettingname = true;
+                }
             }
         }
 
@@ -229,25 +158,48 @@ namespace GetHAMContactInfo
             }
             this.Close();
         }
-        private void checkLogin()
+        private bool checkLogin()
         {
             HtmlElement elem, tboxUsername, tboxPassword, btnContinue, btnLogin;
             tboxUsername = m_doc.GetElementById("username");
             tboxPassword = m_doc.GetElementById("password");
             btnContinue = getElement("INPUT", "value", "Continue");
             btnLogin = getElement("INPUT", "value", "Login");
+
             if ((btnContinue != null || btnLogin != null) && tboxUsername != null && tboxPassword != null)
             {
-                tboxPassword.SetAttribute("value", txtPassword.Text);
-                tboxUsername.SetAttribute("value", txtUserName.Text);
-                if (btnContinue != null)
+                if (txtPassword.Text != "" && txtUserName.Text != "")
                 {
-                    btnContinue.InvokeMember("click");
-
+                    
+                    if (username == txtUserName.Text && password == txtPassword.Text)
+                    {
+                        MessageBox.Show("Invalid Credentials, try again!");
+                        waiting_for_credentials = true;
+                    }
+                    else
+                    {
+                        username = txtUserName.Text;
+                        password = txtPassword.Text;
+                        waiting_for_credentials = false;
+                    }
+                    tboxPassword.SetAttribute("value", password);
+                    tboxUsername.SetAttribute("value", username);
+                    
+                    if (btnContinue != null)
+                    {
+                        btnContinue.InvokeMember("click");
+                    }
+                    else if (btnLogin != null)
+                    {
+                        btnLogin.InvokeMember("click");
+                    }
+                    
                 }
-                else if (btnLogin != null)
+                else
                 {
-                    btnLogin.InvokeMember("click");
+                    MessageBox.Show("Please Enter Valid Username and Password and Press Login Button.");
+                    
+                    waiting_for_credentials = true;
                 }
             }
             else
@@ -259,20 +211,142 @@ namespace GetHAMContactInfo
                     txtPassword.Enabled = false;
                     btnLogon.Text = "Logged On!";
                     btnLogon.Enabled = false;
-                    Lookup(ele);
-                    return;
+                    loggedin = true;
+                    waiting_for_credentials = false;
+                    if (m_ID != "" && !autorun)
+                    {
+                        textBox1.Enabled = false;
+                        autorun = true;
+                        Lookup(ele);
+                    }
                 }
             }
-            
+            return true;
         }
         private void button2_Click(object sender, EventArgs e)
         {
-
             checkLogin();
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            
+            if (m_doc != webBrowser1.Document)
+            {
+                m_doc = webBrowser1.Document;
+            }
+            if (waiting_for_credentials && !loggedin)
+            {
+                return;
+            }
+            else if (!loggedin)
+            {
+                checkLogin();
+            }
+            else
+            {
+                checkLogin();
+            }
+            if (m_doc.Body != null)
+            {
+                if (m_doc.Body.InnerText != null)
+                {
+                    String innertText = m_doc.Body.InnerText;
+                    if (innertText.IndexOf("Daily usage limit exceeded") > -1)
+                    {
+                        MessageBox.Show(
+                            "You have reached your daily limit, you may only search for you own call sign data!");
+                        this.Close();
+                        return;
+                    }
+                }
+            }
+
+            if (m_doc.GetElementById("qrzcenter") != null)
+            {
+                if (m_doc.GetElementById("qrzcenter").InnerText.IndexOf("produced no results") > -1)
+                {
+                    MessageBox.Show("Call Sign NOT FOUND!");
+                    this.Close();
+                    return;
+                }
+            }
+            
+            if (gettingname)
+            {
+                HtmlElement ele = null;
+                ele = m_doc.GetElementById("csdata");
+                if (ele != null)
+                {
+                    HtmlElementCollection collect = ele.GetElementsByTagName("P");
+                    string address = collect[0].InnerHtml;
+                    txtName.Text = collect[0].InnerHtml.Substring(0, address.IndexOf("<"));
+                    address = address.Substring(address.IndexOf(txtName.Text));
+                    address = address.Substring(address.IndexOf("SPAN><BR>") + 9);
+                    txtAddress.Text = address.Substring(0, address.IndexOf("<BR>"));
+                    address = address.Trim(txtAddress.Text.ToCharArray());
+                    string trimstr = "<BR>";
+                    address = address.Substring(address.IndexOf(trimstr) + 4);
+                    txtCity.Text = address.Substring(0, address.IndexOf("<BR>"));
+                    address = address.Substring(address.IndexOf(txtCity.Text));
+                    address = address.Substring(address.IndexOf(trimstr));
+                    txtCountry.Text = collect[0].InnerHtml.Substring(collect[0].InnerHtml.LastIndexOf("<BR>") + 4);
+                    HtmlElement email = m_doc.GetElementById("qem");
+                    if (email != null)
+                    {
+
+                        email.InvokeMember("click");
+                        txtEmail.Text = email.InnerText;
+                    }
+                    gettingname = false;
+                }
+
+                HtmlElementCollection coll = m_doc.GetElementsByTagName("TR");
+                foreach (HtmlElement ele2 in coll)
+                {
+                    HtmlElementCollection innerCollection = ele2.GetElementsByTagName("TD");
+                    if (innerCollection.Count == 2)
+                    {
+                        switch (innerCollection[0].InnerText)
+                        {
+                            case "Class":
+                                txtClass.Text = innerCollection[1].InnerText;
+                                break;
+                            case "Grid Square":
+                                txtGridSquare.Text = innerCollection[1].InnerText;
+                                break;
+                            case "US State":
+                                txtUSState.Text = innerCollection[1].InnerText;
+                                break;
+                            case "US County":
+                                txtUSCounty.Text = innerCollection[1].InnerText;
+                                break;
+                            case "Bearing":
+                                txtBearing.Text = innerCollection[1].InnerText;
+                                break;
+                            case "Distance":
+                                txtDistance.Text = innerCollection[1].InnerText;
+                                break;
+                            case "Latitude":
+                                txtLatitude.Text = innerCollection[1].InnerText;
+                                break;
+                            case "Longitude":
+                                txtLongitude.Text = innerCollection[1].InnerText;
+                                break;
+                            case "Born":
+                                txtBorn.Text = innerCollection[1].InnerText;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
 
         }
     }

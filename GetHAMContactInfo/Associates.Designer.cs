@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Associates));
             this.gridAssociates = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridAssociates)).BeginInit();
@@ -61,6 +62,7 @@
             this.ClientSize = new System.Drawing.Size(1220, 566);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gridAssociates);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Associates";
             this.Text = "Associates";
             this.Load += new System.EventHandler(this.Associates_Load);

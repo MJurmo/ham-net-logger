@@ -26,5 +26,17 @@ namespace GetHAMContactInfo
             associates.Show();
             
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form lookup = new AssociateLookup("");
+            lookup.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form radiogram = new RADIOGRAM();
+            radiogram.Show();
+        }
     }
 }
