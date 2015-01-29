@@ -9,13 +9,19 @@ using System.Windows.Forms;
 
 namespace GetHAMContactInfo
 {
-    public partial class RADIOGRAM : Form
+    public partial class RADIOGRAM2 : Form
     {
         private string m_ID;
-        public RADIOGRAM(string ID)
+
+        public RADIOGRAM2(string ID)
         {
             InitializeComponent();
             m_ID = ID;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

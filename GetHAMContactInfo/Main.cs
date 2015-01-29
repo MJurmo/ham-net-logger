@@ -35,7 +35,7 @@ namespace GetHAMContactInfo
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form radiogram = new RADIOGRAM();
+            Form radiogram = new Radiograms();
             radiogram.Show();
         }
     }

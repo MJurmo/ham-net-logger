@@ -62,6 +62,13 @@
     <Compile Include="AssociateLookup.Designer.cs">
       <DependentUpon>AssociateLookup.cs</DependentUpon>
     </Compile>
+    <Compile Include="RADIOGRAM2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RADIOGRAM2.Designer.cs">
+      <DependentUpon>RADIOGRAM2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RadiogramsController.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +88,12 @@
     </Compile>
     <Compile Include="RADIOGRAM.Designer.cs">
       <DependentUpon>RADIOGRAM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Radiograms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Radiograms.Designer.cs">
+      <DependentUpon>Radiograms.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Associates.resx">
       <DependentUpon>Associates.cs</DependentUpon>
@@ -105,6 +118,12 @@
     </Compile>
     <EmbeddedResource Include="RADIOGRAM.resx">
       <DependentUpon>RADIOGRAM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RADIOGRAM2.resx">
+      <DependentUpon>RADIOGRAM2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Radiograms.resx">
+      <DependentUpon>Radiograms.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
