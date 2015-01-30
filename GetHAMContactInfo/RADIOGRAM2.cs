@@ -23,5 +23,23 @@ namespace GetHAMContactInfo
         {
 
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        private void RADIOGRAM2_ResizeBegin(object sender, EventArgs e)
+        {
+            this.SuspendLayout();
+        }
+
+        private void RADIOGRAM2_ResizeEnd(object sender, EventArgs e)
+        {
+            this.ResumeLayout(true);
+        }
     }
 }
