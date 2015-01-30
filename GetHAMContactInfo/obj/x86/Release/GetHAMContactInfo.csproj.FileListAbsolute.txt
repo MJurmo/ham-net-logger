@@ -16,7 +16,7 @@ C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\R
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Associates.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.AssociateLookup.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Main.resources
-C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.csprojResolveAssemblyReference.cache
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.RADIOGRAM.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Radiograms.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.RADIOGRAM2.resources
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.csprojResolveAssemblyReference.cache
