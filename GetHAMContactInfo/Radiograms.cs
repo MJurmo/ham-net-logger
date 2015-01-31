@@ -29,7 +29,7 @@ namespace GetHAMContactInfo
         private void gridRadiograms_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int currRow = ((DataGridView)sender).SelectedCells[0].RowIndex;
-            gridRadiograms.CurrentCell = gridRadiograms.Rows[currRow].Cells["number"];
+            gridRadiograms.CurrentCell = gridRadiograms.Rows[currRow-1].Cells["ID"];
             gridRadiograms.CurrentCell = gridRadiograms.Rows[currRow].Cells["ID"];
             Form radiogram = new RADIOGRAM2(gridRadiograms.Rows[((DataGridView)sender).SelectedCells[0].RowIndex].Cells["ID"].EditedFormattedValue.ToString());
             radiogram.Show();
