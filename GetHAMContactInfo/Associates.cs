@@ -37,7 +37,7 @@ namespace GetHAMContactInfo
         {
 
             int currRow = ((DataGridView) sender).SelectedCells[0].RowIndex;
-            gridAssociates.CurrentCell = gridAssociates.Rows[currRow - 1].Cells["ID"];
+            gridAssociates.CurrentCell = gridAssociates.Rows[currRow + 1].Cells["ID"];
             gridAssociates.CurrentCell = gridAssociates.Rows[currRow].Cells["ID"];
             Form AssociateLookup = new AssociateLookup(gridAssociates.Rows[((DataGridView)sender).SelectedCells[0].RowIndex].Cells["ID"].EditedFormattedValue.ToString());
             AssociateLookup.Show();
