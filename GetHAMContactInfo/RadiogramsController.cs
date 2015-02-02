@@ -15,6 +15,12 @@ namespace GetHAMContactInfo
         {
         }
 
+        public static bool FindID(string ID)
+        {
+            bool bRet = GetDataSet().Tables[0].AsEnumerable().Any(row => ID == row.Field<string>("ID"));
+            return bRet;
+        }
+
         public static DataSet GetDataSet()
         {
             if (dsRadiograms == null)

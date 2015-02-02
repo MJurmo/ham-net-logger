@@ -182,5 +182,57 @@ namespace GetHAMContactInfo
                     MessageBox.Show(e2.Message);
                 }
         }
+
+        private void txt_number_Leave(object sender, EventArgs e)
+        {
+            DataRow[] diagramRow = RadiogramsController.GetDataSet().Tables[0].Select("ID = '" + m_ID + "'");
+            string strSearchID="";
+            if (!m_ID.Contains("-"))
+            {
+                strSearchID += m_ID + "-" + txt_number.Text;
+                if (RadiogramsController.FindID(strSearchID))
+                {
+                    MessageBox.Show(
+                        "Radiogram already exists with this number for this associate, please enter another number.");
+                    txt_number.Text = "";
+                    txt_number.Focus();
+                }
+                else
+                {
+
+                    m_ID = strSearchID;
+                    try
+                    {
+                        diagramRow[0]["ID"] = m_ID;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                string strIDnum = m_ID.Substring(m_ID.IndexOf("-")+1);
+                string strIDprefix = m_ID.Substring(0, m_ID.IndexOf("-"));
+                if (strIDnum != txt_number.Text)
+                {
+                    if (!RadiogramsController.FindID(strIDprefix + "-" + txt_number.Text))
+                    {
+                        m_ID = m_ID.Replace(strIDnum, txt_number.Text);
+                        diagramRow[0]["ID"] = m_ID;
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Radiogram already exists with this number for this associate, please enter another number.");
+                        txt_number.Text = strIDnum;
+                        txt_number.Focus();
+                    }
+                }
+                //if(txt_number.Text != )
+            }
+
+        }
     }
 }

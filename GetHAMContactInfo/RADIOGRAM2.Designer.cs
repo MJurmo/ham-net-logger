@@ -198,6 +198,7 @@
             this.txt_number.Name = "txt_number";
             this.txt_number.Size = new System.Drawing.Size(212, 22);
             this.txt_number.TabIndex = 0;
+            this.txt_number.Leave += new System.EventHandler(this.txt_number_Leave);
             // 
             // tableLayoutPanel1
             // 
