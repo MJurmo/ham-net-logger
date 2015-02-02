@@ -64,6 +64,7 @@
             this.txt_word9 = new System.Windows.Forms.TextBox();
             this.txt_word10 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.txt_to_phone = new System.Windows.Forms.TextBox();
             this.txt_to_email = new System.Windows.Forms.TextBox();
             this.txt_am_csz = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -92,7 +93,6 @@
             this.txt_sig_from_time = new System.Windows.Forms.TextBox();
             this.txt_sig_from_date = new System.Windows.Forms.TextBox();
             this.txt_sig_from = new System.Windows.Forms.TextBox();
-            this.txt_to_phone = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -530,6 +530,14 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1728, 54);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
+            // txt_to_phone
+            // 
+            this.txt_to_phone.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txt_to_phone.Location = new System.Drawing.Point(401, 3);
+            this.txt_to_phone.Name = "txt_to_phone";
+            this.txt_to_phone.Size = new System.Drawing.Size(328, 22);
+            this.txt_to_phone.TabIndex = 3;
+            // 
             // txt_to_email
             // 
             this.txt_to_email.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -844,14 +852,6 @@
             this.txt_sig_from.Name = "txt_sig_from";
             this.txt_sig_from.Size = new System.Drawing.Size(187, 22);
             this.txt_sig_from.TabIndex = 0;
-            // 
-            // txt_to_phone
-            // 
-            this.txt_to_phone.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_to_phone.Location = new System.Drawing.Point(401, 3);
-            this.txt_to_phone.Name = "txt_to_phone";
-            this.txt_to_phone.Size = new System.Drawing.Size(328, 22);
-            this.txt_to_phone.TabIndex = 3;
             // 
             // RADIOGRAM2
             // 

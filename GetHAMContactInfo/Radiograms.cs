@@ -29,24 +29,33 @@ namespace GetHAMContactInfo
         private void gridRadiograms_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int currRow = ((DataGridView)sender).SelectedCells[0].RowIndex;
+            
             if (currRow == gridRadiograms.Rows.Count-1)
             {
                 MessageBox.Show(
                     "Invalid record selected. NOTE: To add a new record, please enter a ID(call sign) into a new record in the grid and double click the new record.");
                 return;
             }
-            gridRadiograms.CurrentCell = gridRadiograms.Rows[currRow+1].Cells["ID"];
+            gridRadiograms.CurrentCell = gridRadiograms.Rows[currRow + 1].Cells["ID"];
             gridRadiograms.CurrentCell = gridRadiograms.Rows[currRow].Cells["ID"];
-            Form radiogram = new RADIOGRAM2(gridRadiograms.Rows[((DataGridView)sender).SelectedCells[0].RowIndex].Cells["ID"].EditedFormattedValue.ToString());
-            if (gridRadiograms.Rows[currRow].Cells["ID"].Value.ToString() == "")
+            bool bDuplicate = false;
+            if (gridRadiograms.Rows[currRow].Cells["ID"].EditedFormattedValue.ToString() == "")
             {
                 MessageBox.Show("Please enter an ID(call sign).");
                 return;
             }
-            else
+            else if (RadiogramsController.FindID(gridRadiograms.Rows[currRow].Cells["ID"].EditedFormattedValue.ToString(),ref bDuplicate))
             {
-                radiogram.Show();
+                if (bDuplicate)
+                {
+                    MessageBox.Show("This is a duplicate ID, please enter another ID.");
+                    return;
+                }
+
             }
+            
+            Form radiogram = new RADIOGRAM2(gridRadiograms.Rows[((DataGridView)sender).SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
+            radiogram.Show();
         }
     }
 }

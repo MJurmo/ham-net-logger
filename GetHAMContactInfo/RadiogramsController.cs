@@ -15,10 +15,21 @@ namespace GetHAMContactInfo
         {
         }
 
-        public static bool FindID(string ID)
+        public static bool FindID(string ID, ref bool duplicate)
         {
-            bool bRet = GetDataSet().Tables[0].AsEnumerable().Any(row => ID == row.Field<string>("ID"));
-            return bRet;
+            var Results = GetDataSet().Tables[0].AsEnumerable().Count(row => ID == row.Field<string>("ID"));
+
+            bool retVal = true;
+            int numrecs = Results;
+            if (numrecs == 0)
+            {
+                retVal = false;
+            }
+            if (numrecs > 1)
+            {
+                duplicate = true;
+            }
+            return retVal;
         }
 
         public static DataSet GetDataSet()

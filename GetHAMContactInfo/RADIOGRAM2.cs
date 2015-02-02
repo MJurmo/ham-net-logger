@@ -125,6 +125,17 @@ namespace GetHAMContactInfo
                 try
                 {
                     txt_number.Text=diagramRow[0]["number"].ToString();
+                    if (txt_number.Text == "")
+                    {
+                        if (m_ID.IndexOf("-") > -1)
+                        {
+                            string strIDnum = m_ID.Substring(m_ID.IndexOf("-") + 1);
+                            if (strIDnum.Length > 0)
+                            {
+                                txt_number.Text = strIDnum;
+                            }
+                        }
+                    }
                     txt_precedence.Text = diagramRow[0]["precedence"].ToString();
                     txt_hx.Text = diagramRow[0]["hx"].ToString();
                     txt_st_of_origin.Text = diagramRow[0]["st-of-origin"].ToString();
@@ -187,10 +198,11 @@ namespace GetHAMContactInfo
         {
             DataRow[] diagramRow = RadiogramsController.GetDataSet().Tables[0].Select("ID = '" + m_ID + "'");
             string strSearchID="";
+            bool bDuplicate = false;
             if (!m_ID.Contains("-"))
             {
                 strSearchID += m_ID + "-" + txt_number.Text;
-                if (RadiogramsController.FindID(strSearchID))
+                if (RadiogramsController.FindID(strSearchID, ref bDuplicate))
                 {
                     MessageBox.Show(
                         "Radiogram already exists with this number for this associate, please enter another number.");
@@ -215,9 +227,10 @@ namespace GetHAMContactInfo
             {
                 string strIDnum = m_ID.Substring(m_ID.IndexOf("-")+1);
                 string strIDprefix = m_ID.Substring(0, m_ID.IndexOf("-"));
+                
                 if (strIDnum != txt_number.Text)
                 {
-                    if (!RadiogramsController.FindID(strIDprefix + "-" + txt_number.Text))
+                    if (!RadiogramsController.FindID(strIDprefix + "-" + txt_number.Text, ref bDuplicate))
                     {
                         m_ID = m_ID.Replace(strIDnum, txt_number.Text);
                         diagramRow[0]["ID"] = m_ID;
