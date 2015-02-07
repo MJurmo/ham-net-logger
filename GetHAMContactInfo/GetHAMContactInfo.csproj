@@ -62,6 +62,13 @@
     <Compile Include="AssociateLookup.Designer.cs">
       <DependentUpon>AssociateLookup.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrganizationController.cs" />
+    <Compile Include="Organizations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organizations.Designer.cs">
+      <DependentUpon>Organizations.cs</DependentUpon>
+    </Compile>
     <Compile Include="RADIOGRAM2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +102,18 @@
     <Compile Include="Radiograms.Designer.cs">
       <DependentUpon>Radiograms.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectAssociates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectAssociates.Designer.cs">
+      <DependentUpon>SelectAssociates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Session Command.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Session Command.Designer.cs">
+      <DependentUpon>Session Command.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Associates.resx">
       <DependentUpon>Associates.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organizations.resx">
+      <DependentUpon>Organizations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PageSource.resx">
       <DependentUpon>PageSource.cs</DependentUpon>
@@ -124,6 +146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Radiograms.resx">
       <DependentUpon>Radiograms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectAssociates.resx">
+      <DependentUpon>SelectAssociates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Session Command.resx">
+      <DependentUpon>Session Command.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
