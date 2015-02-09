@@ -14,6 +14,7 @@ namespace GetHAMContactInfo
         public Session_Command()
         {
             InitializeComponent();
+            
         }
 
         private Form selectassociates = new SelectAssociates();
@@ -63,7 +64,9 @@ namespace GetHAMContactInfo
             {
                 selectassociates= new SelectAssociates();
             }
-            selectassociates.Show();
+            selectassociates.ShowDialog();
+            lstAssociates.DataSource = SelectedAssociates.getTable();
+            lstAssociates.DisplayMember = "ID";
         }
     }
 }

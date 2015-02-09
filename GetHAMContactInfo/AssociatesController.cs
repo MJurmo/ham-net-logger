@@ -22,8 +22,9 @@ namespace GetHAMContactInfo
                 dsAssociates = new DataSet();
                 dsAssociates.ReadXml("../../Data/associates.xml");
             }
+            dsAssociates.Tables[0].PrimaryKey = new DataColumn[] {dsAssociates.Tables[0].Columns["ID"]};
             return dsAssociates;
-        }
+        }           
 
         public static void SaveDataSet()
         {

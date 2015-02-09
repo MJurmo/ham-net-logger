@@ -108,6 +108,7 @@
     <Compile Include="SelectAssociates.Designer.cs">
       <DependentUpon>SelectAssociates.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectedAssociates.cs" />
     <Compile Include="Session Command.cs">
       <SubType>Form</SubType>
     </Compile>

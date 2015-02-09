@@ -33,6 +33,7 @@
             this.lstSelectedAssociates = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(218, 233);
+            this.button1.Location = new System.Drawing.Point(218, 163);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 44);
             this.button1.TabIndex = 2;
@@ -66,6 +67,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.lstAllAssociates);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.lstSelectedAssociates);
@@ -76,6 +78,16 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(218, 296);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 44);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "<<<<";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // SelectAssociates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -85,6 +97,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SelectAssociates";
             this.Text = "SelectAssociates";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectAssociates_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -96,5 +109,6 @@
         private System.Windows.Forms.ListBox lstSelectedAssociates;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button2;
     }
 }
