@@ -12,55 +12,51 @@ namespace GetHAMContactInfo
     public partial class SelectAssociates : Form
     {
         
-        private DataTable _selectedds = new DataTable();
+        
 
         public SelectAssociates()
         {
             InitializeComponent();
             lstAllAssociates.DataSource = AssociatesController.GetDataSet().Tables[0];
-            _selectedds = AssociatesController.GetDataSet().Tables[0].Clone();
-            lstSelectedAssociates.DataSource = _selectedds;
+            
+            lstSelectedAssociates.DataSource = SelectedAssociates.getTable();
             lstSelectedAssociates.DisplayMember = "ID";
             lstAllAssociates.DisplayMember = "ID";
-            SelectedAssociates.getTable().Clear();
-            foreach (DataRow dr in _selectedds.Rows)
-            {
-                SelectedAssociates.getTable().ImportRow(dr);
-            }
+            
         }
         
         private void button1_Click(object sender, EventArgs e)
         {
-            DataRow dr = _selectedds.NewRow();
+            DataRow dr = SelectedAssociates.getTable().NewRow();
             dr.ItemArray = ((DataRowView)lstAllAssociates.SelectedItem).Row.ItemArray;
-            var itemsfound = _selectedds.Rows.Find(((DataRowView) lstAllAssociates.SelectedItem).Row["ID"].ToString());
+            var itemsfound = SelectedAssociates.getTable().Rows.Find(((DataRowView)lstAllAssociates.SelectedItem).Row["ID"].ToString());
             if(itemsfound == null)
             {
-                _selectedds.Rows.Add(dr);
-                _selectedds.AcceptChanges();
+                SelectedAssociates.getTable().Rows.Add(dr);
+                SelectedAssociates.getTable().AcceptChanges();
             }
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var itemsfound = _selectedds.Rows.Find(((DataRowView)lstSelectedAssociates.SelectedItem).Row["ID"].ToString());
+            var itemsfound = SelectedAssociates.getTable().Rows.Find(((DataRowView)lstSelectedAssociates.SelectedItem).Row["ID"].ToString());
             if (itemsfound != null)
             {
                 itemsfound.Delete();
-                _selectedds.AcceptChanges();
+                SelectedAssociates.getTable().AcceptChanges();
             }
         }
 
         private void SelectAssociates_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            SelectedAssociates.getTable().Clear();
+            //SelectedAssociates.getTable().Clear();
             
-            foreach (DataRow dr in _selectedds.Rows)
-            {
-                SelectedAssociates.getTable().ImportRow(dr);
-            }
+            //foreach (DataRow dr in _selectedds.Rows)
+            //{
+            //    SelectedAssociates.getTable().ImportRow(dr);
+            //}
         }
     }
 }

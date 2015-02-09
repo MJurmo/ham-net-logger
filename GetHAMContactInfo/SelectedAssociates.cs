@@ -21,6 +21,7 @@ namespace GetHAMContactInfo
                     col1.DataType = col.DataType;
                     getTable().Columns.Add(col1);
                 }
+                getTable().PrimaryKey = new DataColumn[] { getTable().Columns["ID"] };
             }
             return m_associates;
         }
