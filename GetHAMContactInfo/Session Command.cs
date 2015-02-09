@@ -14,7 +14,8 @@ namespace GetHAMContactInfo
         public Session_Command()
         {
             InitializeComponent();
-            
+            cboOrganization.DataSource = OrganizationController.GetDataSet().Tables[0];
+            cboOrganization.DisplayMember = "band";
         }
 
         private Form selectassociates = new SelectAssociates();
