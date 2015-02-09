@@ -35,6 +35,8 @@
             this.btnAddAssociates = new System.Windows.Forms.Button();
             this.cboOrganization = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtSessionID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBeginEndSession
@@ -51,7 +53,7 @@
             // 
             this.lstAssociates.FormattingEnabled = true;
             this.lstAssociates.ItemHeight = 16;
-            this.lstAssociates.Location = new System.Drawing.Point(12, 106);
+            this.lstAssociates.Location = new System.Drawing.Point(12, 143);
             this.lstAssociates.Name = "lstAssociates";
             this.lstAssociates.Size = new System.Drawing.Size(120, 500);
             this.lstAssociates.TabIndex = 1;
@@ -59,7 +61,7 @@
             // lblAssociates
             // 
             this.lblAssociates.AutoSize = true;
-            this.lblAssociates.Location = new System.Drawing.Point(12, 57);
+            this.lblAssociates.Location = new System.Drawing.Point(12, 94);
             this.lblAssociates.Name = "lblAssociates";
             this.lblAssociates.Size = new System.Drawing.Size(82, 17);
             this.lblAssociates.TabIndex = 2;
@@ -67,7 +69,7 @@
             // 
             // btnAddAssociates
             // 
-            this.btnAddAssociates.Location = new System.Drawing.Point(15, 77);
+            this.btnAddAssociates.Location = new System.Drawing.Point(15, 114);
             this.btnAddAssociates.Name = "btnAddAssociates";
             this.btnAddAssociates.Size = new System.Drawing.Size(75, 23);
             this.btnAddAssociates.TabIndex = 3;
@@ -79,25 +81,45 @@
             // 
             this.cboOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOrganization.FormattingEnabled = true;
-            this.cboOrganization.Location = new System.Drawing.Point(127, 12);
+            this.cboOrganization.Location = new System.Drawing.Point(127, 49);
             this.cboOrganization.Name = "cboOrganization";
             this.cboOrganization.Size = new System.Drawing.Size(121, 24);
             this.cboOrganization.TabIndex = 4;
+            this.cboOrganization.SelectedIndexChanged += new System.EventHandler(this.cboOrganization_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(12, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Organization:";
+            // 
+            // txtSessionID
+            // 
+            this.txtSessionID.Enabled = false;
+            this.txtSessionID.Location = new System.Drawing.Point(127, 12);
+            this.txtSessionID.Name = "txtSessionID";
+            this.txtSessionID.Size = new System.Drawing.Size(100, 22);
+            this.txtSessionID.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Session ID:";
             // 
             // Session_Command
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 768);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtSessionID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboOrganization);
             this.Controls.Add(this.btnAddAssociates);
@@ -121,6 +143,8 @@
         private System.Windows.Forms.Button btnAddAssociates;
         private System.Windows.Forms.ComboBox cboOrganization;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtSessionID;
+        private System.Windows.Forms.Label label2;
 
     }
 }

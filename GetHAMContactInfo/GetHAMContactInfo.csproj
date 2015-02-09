@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutNMC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutNMC.Designer.cs">
+      <DependentUpon>AboutNMC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Associates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,20 @@
     </Compile>
     <Compile Include="AssociateLookup.Designer.cs">
       <DependentUpon>AssociateLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="configurationController.cs" />
+    <Compile Include="QRZCredentials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QRZCredentials.Designer.cs">
+      <DependentUpon>QRZCredentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="session_associateController.cs" />
+    <Compile Include="Sessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sessions.Designer.cs">
+      <DependentUpon>Sessions.cs</DependentUpon>
     </Compile>
     <Compile Include="OrganizationController.cs" />
     <Compile Include="Organizations.cs">
@@ -115,11 +135,21 @@
     <Compile Include="Session Command.Designer.cs">
       <DependentUpon>Session Command.cs</DependentUpon>
     </Compile>
+    <Compile Include="SessionsController.cs" />
+    <EmbeddedResource Include="AboutNMC.resx">
+      <DependentUpon>AboutNMC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Associates.resx">
       <DependentUpon>Associates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AssociateLookup.resx">
       <DependentUpon>AssociateLookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QRZCredentials.resx">
+      <DependentUpon>QRZCredentials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sessions.resx">
+      <DependentUpon>Sessions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

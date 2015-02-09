@@ -16,6 +16,8 @@ namespace GetHAMContactInfo
         private Form radiogram = new Radiograms();
         private Form organization = new Organizations();
         private Form session = new Session_Command();
+        private Form sessions = new Sessions();
+        private Form qrzcredentials = new QRZCredentials();
         public Main()
         {
             InitializeComponent();
@@ -41,6 +43,12 @@ namespace GetHAMContactInfo
                     case ("Session_Command"):
                         form = new Session_Command();
                         break;
+                    case ("Sessions"):
+                        form = new Sessions();
+                        break;
+                    case ("QRZCredentials"):
+                        form = new QRZCredentials();
+                        break;
                     default:
                         MessageBox.Show("I don't know this form!");
                         break;
@@ -48,25 +56,39 @@ namespace GetHAMContactInfo
             }
             form.Show();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            handle_form_view(associates);
-        }
         private void button2_Click(object sender, EventArgs e)
         {
             //handle_form_view(lookup);
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            handle_form_view(radiogram);
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            handle_form_view(organization);
-        }
         private void button5_Click(object sender, EventArgs e)
         {
             handle_form_view(session);
+        }
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form about = new AboutNMC();
+            about.Show();
+        }
+        private void sessionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            handle_form_view(sessions);
+        }
+        private void radiogramsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            handle_form_view(radiogram);
+        }
+        private void organizationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            handle_form_view(organization);
+        }
+        private void associatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            handle_form_view(associates);
+        }
+
+        private void qRZCredentialsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            handle_form_view(qrzcredentials);
         }
     }
 }
