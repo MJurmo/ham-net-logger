@@ -99,7 +99,7 @@
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Command Center";
+            this.Text = "Command Center(v1.1)";
             this.ResumeLayout(false);
 
         }
