@@ -1,4 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
 <sessions>
-  <session ID="" traffic_brought="" traffic_passed="" participants="" net_control="" session_length=""/>
+  <session ID="" traffic_brought="" traffic_passed="" participants="" net_control="" session_length="" />
+  <session ID="150-1" traffic_brought="1" participants="1" session_length="Session duration:3MIN;11SEC;" />
 </sessions>
