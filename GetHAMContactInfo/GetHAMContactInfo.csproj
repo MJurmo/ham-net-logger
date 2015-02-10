@@ -69,6 +69,12 @@
       <DependentUpon>AssociateLookup.cs</DependentUpon>
     </Compile>
     <Compile Include="configurationController.cs" />
+    <Compile Include="Preamble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preamble.Designer.cs">
+      <DependentUpon>Preamble.cs</DependentUpon>
+    </Compile>
     <Compile Include="QRZCredentials.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AssociateLookup.resx">
       <DependentUpon>AssociateLookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preamble.resx">
+      <DependentUpon>Preamble.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QRZCredentials.resx">
       <DependentUpon>QRZCredentials.cs</DependentUpon>

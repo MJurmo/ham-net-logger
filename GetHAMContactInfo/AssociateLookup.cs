@@ -29,6 +29,8 @@ namespace GetHAMContactInfo
         public AssociateLookup(string ID)
         {
             InitializeComponent();
+            txtUserName.Text = configurationController.GetDataSet().Tables[0].Rows[0]["qrz_username"].ToString();
+            txtPassword.Text = configurationController.GetDataSet().Tables[0].Rows[0]["qrz_password"].ToString();
             try
             {
                 webBrowser1.Navigate("http://www.Qrz.com");

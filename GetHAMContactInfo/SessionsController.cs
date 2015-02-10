@@ -51,6 +51,8 @@ namespace GetHAMContactInfo
                     dsSessions = new DataSet();
                     dsSessions.ReadXml("../../Data/sessions.xml");
                 }
+
+                
                 dsSessions.Tables[0].PrimaryKey = new DataColumn[] { dsSessions.Tables[0].Columns["ID"] };
                 return dsSessions;
             }

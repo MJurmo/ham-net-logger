@@ -1,11 +1,4 @@
-<?xml version="1.0" standalone="yes"?>
+?xml version="1.0" standalone="yes"?>
 <associates_sessions>
-  <associate_session call_sign="" session_ID="" />
-  <associate_session call_sign="ac8ni" session_ID="150-3" />
-  <associate_session call_sign="ab8kp" session_ID="150-3" />
-  <associate_session call_sign="ac8ni" session_ID="150-4" />
-  <associate_session call_sign="ac8ni" session_ID="150-5" />
-  <associate_session call_sign="ab8kp" session_ID="150-5" />
-  <associate_session call_sign="ac8ni" session_ID="150-6" />
-  <associate_session call_sign="ab8kp" session_ID="150-6" />
+  <associate_session call_sign="" session_ID=""/>
 </associates_sessions>

@@ -859,6 +859,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1734, 849);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RADIOGRAM2";
             this.Text = "RADIOGRAM2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RADIOGRAM2_FormClosing);

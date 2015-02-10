@@ -38,13 +38,17 @@ namespace GetHAMContactInfo
             {
                 dsRadiograms = new DataSet();
                 dsRadiograms.ReadXml("../../Data/radiograms.xml");
+                dsRadiograms.Tables[0].PrimaryKey = new DataColumn[] { dsRadiograms.Tables[0].Columns["ID"] };
             }
             return dsRadiograms;
         }
 
         public static void SaveDataSet()
         {
-            dsRadiograms.WriteXml("../../Data/radiograms.xml");
+            if (dsRadiograms != null)
+            {
+                dsRadiograms.WriteXml("../../Data/radiograms.xml");
+            }
         }
     }
 }

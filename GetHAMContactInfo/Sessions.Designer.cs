@@ -42,12 +42,12 @@
             this.gridSessions.Location = new System.Drawing.Point(0, 0);
             this.gridSessions.Name = "gridSessions";
             this.gridSessions.RowTemplate.Height = 24;
-            this.gridSessions.Size = new System.Drawing.Size(647, 110);
+            this.gridSessions.Size = new System.Drawing.Size(647, 306);
             this.gridSessions.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 116);
+            this.button1.Location = new System.Drawing.Point(12, 370);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 23);
             this.button1.TabIndex = 1;

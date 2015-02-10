@@ -36,7 +36,10 @@ namespace GetHAMContactInfo
 
         public static void SaveDataSet()
         {
-            ds_session_associate.WriteXml("../../Data/associate_session.xml");
+            if (ds_session_associate != null)
+            {
+                ds_session_associate.WriteXml("../../Data/associate_session.xml");
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ namespace GetHAMContactInfo
             {
                 dsOrganizations = new DataSet();
                 dsOrganizations.ReadXml("../../Data/organizations.xml");
+                dsOrganizations.Tables[0].PrimaryKey = new DataColumn[] { dsOrganizations.Tables[0].Columns["band"] };
             }
             return dsOrganizations;
         }

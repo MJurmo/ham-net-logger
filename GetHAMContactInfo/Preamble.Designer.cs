@@ -1,6 +1,6 @@
 ﻿namespace GetHAMContactInfo
 {
-    partial class AboutNMC
+    partial class Preamble
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutNMC));
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Preamble));
+            this.txtPreamble = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // txtPreamble
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Version: 1.3";
+            this.txtPreamble.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPreamble.Location = new System.Drawing.Point(0, 0);
+            this.txtPreamble.Name = "txtPreamble";
+            this.txtPreamble.Size = new System.Drawing.Size(381, 255);
+            this.txtPreamble.TabIndex = 0;
+            this.txtPreamble.Text = "";
             // 
-            // AboutNMC
+            // Preamble
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 203);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(381, 255);
+            this.Controls.Add(this.txtPreamble);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AboutNMC";
-            this.Text = "About Net Managers Companion";
+            this.Name = "Preamble";
+            this.Text = "Preamble";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox txtPreamble;
     }
 }
