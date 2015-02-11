@@ -11,11 +11,12 @@ namespace GetHAMContactInfo
 {
     public partial class Preamble : Form
     {
-        public Preamble(string organization_band)
+        public Preamble(string organization_band, string organization_agency)
         {
             InitializeComponent();
+            string[] keys = { organization_band, organization_agency };
             txtPreamble.Text =
-                OrganizationController.GetDataSet().Tables[0].Rows.Find(organization_band)["preamble"].ToString();
+                OrganizationController.GetDataSet().Tables[0].Rows.Find(keys)["preamble"].ToString();
         }
     }
 }

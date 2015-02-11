@@ -20,15 +20,18 @@ namespace GetHAMContactInfo
             if (dsOrganizations == null)
             {
                 dsOrganizations = new DataSet();
-                dsOrganizations.ReadXml("../../Data/organizations.xml");
-                dsOrganizations.Tables[0].PrimaryKey = new DataColumn[] { dsOrganizations.Tables[0].Columns["band"] };
+                dsOrganizations.ReadXml("../../Data/nets.xml");
+                dsOrganizations.Tables[0].Columns.Add("ID", typeof (string), "agency + '_' + band");
+                dsOrganizations.Tables[0].PrimaryKey = new DataColumn[] { dsOrganizations.Tables[0].Columns["band"], dsOrganizations.Tables[0].Columns["agency"] };
             }
             return dsOrganizations;
         }
 
         public static void SaveDataSet()
         {
-            dsOrganizations.WriteXml("../../Data/organizations.xml");
+            dsOrganizations.Tables[0].Columns.Remove("ID");
+            dsOrganizations.AcceptChanges();
+            dsOrganizations.WriteXml("../../Data/nets.xml");
         }
     }
 }

@@ -17,7 +17,7 @@ namespace GetHAMContactInfo
         {
             InitializeComponent();
             cboOrganization.DataSource = OrganizationController.GetDataSet().Tables[0];
-            cboOrganization.DisplayMember = "band";
+            cboOrganization.DisplayMember = "ID";
             SelectedAssociates.getTable().Clear();
             lstAssociates.DataSource = SelectedAssociates.getTable();
             lstAssociates.DisplayMember = "ID";
@@ -104,7 +104,7 @@ namespace GetHAMContactInfo
 
         private void cboOrganization_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtSessionID.Text = SessionsController.GetNewSessionID(((DataRowView)cboOrganization.SelectedItem).Row["band"].ToString());
+            txtSessionID.Text = SessionsController.GetNewSessionID(((DataRowView)cboOrganization.SelectedItem).Row["ID"].ToString());
         }
 
         private void lstAssociates_MouseClick(object sender, MouseEventArgs e)
@@ -146,7 +146,7 @@ namespace GetHAMContactInfo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form preamble = new Preamble(((DataRowView)cboOrganization.SelectedItem).Row["band"].ToString());
+            Form preamble = new Preamble(((DataRowView)cboOrganization.SelectedItem).Row["band"].ToString(), ((DataRowView)cboOrganization.SelectedItem).Row["agency"].ToString());
             preamble.Show();
         }
     }
