@@ -69,6 +69,13 @@
       <DependentUpon>AssociateLookup.cs</DependentUpon>
     </Compile>
     <Compile Include="configurationController.cs" />
+    <Compile Include="Traffic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Traffic.Designer.cs">
+      <DependentUpon>Traffic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="trafficController.cs" />
     <Compile Include="Organization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Session Command.resx">
       <DependentUpon>Session Command.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Traffic.resx">
+      <DependentUpon>Traffic.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

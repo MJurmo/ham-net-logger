@@ -24,6 +24,7 @@ namespace GetHAMContactInfo
                 txtFrequency.Text = dr["frequency"].ToString();
                 txtBand.Text = dr["band"].ToString();
                 txtSchedule.Text = dr["schedule"].ToString();
+                txtPreamble.Text = dr["preamble"].ToString();
             }
             else
             {
@@ -57,15 +58,12 @@ namespace GetHAMContactInfo
             m_dr["frequency"] = txtFrequency.Text;
             m_dr["agency"] = txtAgency.Text;
             m_dr["schedule"] = txtSchedule.Text;
+            m_dr["preamble"] = txtPreamble.Text;
             if (bAddingRecord)
             {
                 OrganizationController.AddOrganization(m_dr);
             }
-            else
-            {
-                OrganizationController.EditOrganization(m_dr);
-                
-            }
+           
         }
     }
 }

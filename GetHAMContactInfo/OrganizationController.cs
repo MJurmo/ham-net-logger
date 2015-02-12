@@ -14,20 +14,8 @@ namespace GetHAMContactInfo
         private OrganizationController()
         {
         }
-
         
-        public static void EditOrganization(DataRow dr)
-        {
-            RemoveIDColumn();
-            string[] key =
-                {
-                    dr["band"].ToString(), dr["agency"].ToString()
-                };
-            dsOrganizations.Tables[0].Rows.Find(key).ItemArray  = dr.ItemArray;
-            
-            AddIDColumn();
-
-        }
+        
         public static void AddOrganization(DataRow dr)
         {
             dsOrganizations.Tables[0].Rows.Add(dr);

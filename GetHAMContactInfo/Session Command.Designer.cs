@@ -41,12 +41,14 @@
             this.ctxAssociateActions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
+            this.gridTraffic = new System.Windows.Forms.DataGridView();
             this.ctxAssociateActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTraffic)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBeginEndSession
             // 
-            this.btnBeginEndSession.Location = new System.Drawing.Point(925, 13);
+            this.btnBeginEndSession.Location = new System.Drawing.Point(552, 13);
             this.btnBeginEndSession.Name = "btnBeginEndSession";
             this.btnBeginEndSession.Size = new System.Drawing.Size(177, 23);
             this.btnBeginEndSession.TabIndex = 0;
@@ -144,11 +146,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // gridTraffic
+            // 
+            this.gridTraffic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridTraffic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridTraffic.Location = new System.Drawing.Point(174, 143);
+            this.gridTraffic.Name = "gridTraffic";
+            this.gridTraffic.RowTemplate.Height = 24;
+            this.gridTraffic.Size = new System.Drawing.Size(555, 500);
+            this.gridTraffic.TabIndex = 10;
+            this.gridTraffic.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridTraffic_CellMouseClick);
+            // 
             // Session_Command
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1114, 768);
+            this.ClientSize = new System.Drawing.Size(756, 660);
+            this.Controls.Add(this.gridTraffic);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSessionID);
@@ -163,6 +177,7 @@
             this.Text = "Sesson_Command";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Session_Command_FormClosing);
             this.ctxAssociateActions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridTraffic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,6 +196,7 @@
         private System.Windows.Forms.ContextMenuStrip ctxAssociateActions;
         private System.Windows.Forms.ToolStripMenuItem ctxToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView gridTraffic;
 
     }
 }

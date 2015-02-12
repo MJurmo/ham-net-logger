@@ -36,9 +36,12 @@
             // 
             // gridSessions
             // 
+            this.gridSessions.AllowUserToAddRows = false;
+            this.gridSessions.AllowUserToDeleteRows = false;
             this.gridSessions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gridSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSessions.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridSessions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gridSessions.Location = new System.Drawing.Point(0, 0);
             this.gridSessions.Name = "gridSessions";
             this.gridSessions.RowTemplate.Height = 24;

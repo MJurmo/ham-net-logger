@@ -22,6 +22,24 @@ namespace GetHAMContactInfo
             lstAssociates.DataSource = SelectedAssociates.getTable();
             lstAssociates.DisplayMember = "ID";
             lstAssociates.ContextMenuStrip = ctxAssociateActions;
+            InitGridTraffic();
+        }
+
+        private void InitGridTraffic()
+        {
+            gridTraffic.Columns.Add("number", "Number");
+            gridTraffic.Columns.Add("target", "Target Locatin");
+            gridTraffic.Columns.Add("passed_to", "Passed To");
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            gridTraffic.Columns.Add(btn);
+            string[] row = new string[] {"1", "your mommas house", "your momma"};
+            gridTraffic.Rows.Add(row);
+            btn.Name = "btnPassed";
+            btn.Text = "Traffic Passed";
+            btn.HeaderText = "Click to Pass";
+            btn.UseColumnTextForButtonValue = true;
+            
+
         }
 
         private void SaveSession()
@@ -148,6 +166,14 @@ namespace GetHAMContactInfo
         {
             Form preamble = new Preamble(((DataRowView)cboOrganization.SelectedItem).Row["band"].ToString(), ((DataRowView)cboOrganization.SelectedItem).Row["agency"].ToString());
             preamble.Show();
+        }
+
+        private void gridTraffic_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                MessageBox.Show(e.RowIndex.ToString());
+            }
         }
     }
 }
