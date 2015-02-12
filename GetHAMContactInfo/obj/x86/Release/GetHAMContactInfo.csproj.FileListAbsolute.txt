@@ -27,3 +27,4 @@ C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\R
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.QRZCredentials.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Preamble.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.csprojResolveAssemblyReference.cache
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Organization.resources
