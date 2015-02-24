@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" standalone="yes"?>
 <traffic>
-  <item sessionID="" associate_call_sign="" target="" passed="" number="" />
+  <item sessionID="" associate_call_sign="" target="" passed_to="" number="" />
 </traffic>

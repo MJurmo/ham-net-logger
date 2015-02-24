@@ -13,6 +13,7 @@ namespace GetHAMContactInfo
     {
         private Form selectassociates = new SelectAssociates();
         private DateTime sessionstart = new DateTime();
+        private string m_currentAssociate;
         public Session_Command()
         {
             InitializeComponent();
@@ -27,19 +28,6 @@ namespace GetHAMContactInfo
 
         private void InitGridTraffic()
         {
-            gridTraffic.Columns.Add("number", "Number");
-            gridTraffic.Columns.Add("target", "Target Locatin");
-            gridTraffic.Columns.Add("passed_to", "Passed To");
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            gridTraffic.Columns.Add(btn);
-            string[] row = new string[] {"1", "your mommas house", "your momma"};
-            gridTraffic.Rows.Add(row);
-            btn.Name = "btnPassed";
-            btn.Text = "Traffic Passed";
-            btn.HeaderText = "Click to Pass";
-            btn.UseColumnTextForButtonValue = true;
-            
-
         }
 
         private void SaveSession()
@@ -58,10 +46,7 @@ namespace GetHAMContactInfo
             }
             session_associateController.SaveDataSet();
             RadiogramsController.SaveDataSet();
-
         }
-
-        
         private void btnBeginEndSession_Click(object sender, EventArgs e)
         {
             if (btnBeginEndSession.Text == "Begin Session")
@@ -107,7 +92,6 @@ namespace GetHAMContactInfo
                     MessageBox.Show(ex.Message);
                     throw;
                 }
-                
             }
         }
 
@@ -137,10 +121,50 @@ namespace GetHAMContactInfo
                 if (((ListBox) sender).SelectedItem != null)
                 {
                     ctxAssociateActions.Show(Cursor.Position);
-                    
                 }
             }
+            else
+            {
+                if (((ListBox)sender).SelectedItem != null)
+                {
+                    if(gridTraffic.Rows.Count>0)
+                        SaveTraffic();
+                    m_currentAssociate = ((DataRowView) lstAssociates.SelectedItem).Row["ID"].ToString();
+                    gridTraffic.DataSource = null;
+                    gridTraffic.DataSource = trafficController.GetUserTraffic(((DataRowView) lstAssociates.SelectedItem).Row["ID"].ToString());
+                    if (gridTraffic.Columns["btnPassed"] != null)
+                    {
+                        gridTraffic.Columns.Remove(gridTraffic.Columns["btnPassed"]);
+                    }
+                    DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                    btn.Name = "btnPassed";
+                    btn.Text = "Traffic Passed";
+                    btn.HeaderText = "Click to Pass";
+                    btn.UseColumnTextForButtonValue = true;
+                    gridTraffic.Columns.Add(btn);
+                }
+            }
+        }
 
+        private void SaveTraffic()
+        {
+            foreach (DataGridViewRow dr in gridTraffic.Rows)
+            {
+                if (!dr.IsNewRow)
+                {
+                    trafficController.UpdateTraffic(txtSessionID.Text, m_currentAssociate,
+                                                    (dr.Cells["target"].Value == null)
+                                                        ? ""
+                                                        : dr.Cells["target"].Value.ToString(),
+                                                    (dr.Cells["passed_to"].Value == null)
+                                                        ? ""
+                                                        : dr.Cells["passed_to"].Value.ToString(),
+                                                    (dr.Cells["number"].Value == null)
+                                                        ? ""
+                                                        : dr.Cells["number"].Value.ToString());
+                }
+            }
+            trafficController.SaveDataSet();
         }
 
         private void ctxAssociateActions_Opening(object sender, CancelEventArgs e)
