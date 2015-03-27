@@ -28,4 +28,5 @@ C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\R
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Preamble.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Organization.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.Traffic.resources
+C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.SessionAssociatesList.resources
 C:\Users\mjurmo10.S2\Documents\GitHub\ham-net-logger\GetHAMContactInfo\obj\x86\Release\GetHAMContactInfo.csprojResolveAssemblyReference.cache

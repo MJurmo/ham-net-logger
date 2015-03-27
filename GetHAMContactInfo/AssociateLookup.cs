@@ -136,22 +136,34 @@ namespace GetHAMContactInfo
             if (m_ID != "")
             {
                 AssociatesController.GetDataSet().AcceptChanges();
-                DataRow[] associateRow = AssociatesController.GetDataSet().Tables[0].Select("ID = '" + m_ID + "'");
+                DataRow[] associateFindRow = AssociatesController.GetDataSet().Tables[0].Select("ID = '" + m_ID + "'");
+                DataRow dr;
+                if (associateFindRow.Length == 0)
+                {
+                    dr = AssociatesController.GetDataSet().Tables[0].NewRow();
+                    dr["ID"] = m_ID;
+                    AssociatesController.GetDataSet().Tables[0].Rows.Add(dr);
+                }
+                else
+                {
+                    dr = associateFindRow[0];
+                }
 
-                associateRow[0]["name"] = txtName.Text;
-                associateRow[0]["address"] = txtAddress.Text;
-                associateRow[0]["city-state-zip"] = txtCity.Text;
-                associateRow[0]["country"] = txtCountry.Text;
-                associateRow[0]["class"] = txtClass.Text;
-                associateRow[0]["latitude"] = txtLatitude.Text;
-                associateRow[0]["longitude"] = txtLongitude.Text;
-                associateRow[0]["email"] = txtEmail.Text;
-                associateRow[0]["birthdate"] = txtBorn.Text;
-                associateRow[0]["bearing"] = txtBearing.Text;
-                associateRow[0]["distance"] = txtDistance.Text;
-                associateRow[0]["us-county"] = txtUSCounty.Text;
-                associateRow[0]["us-state"] = txtUSState.Text;
-                associateRow[0]["grid-square"] = txtGridSquare.Text;
+                dr["name"] = txtName.Text;
+                dr["address"] = txtAddress.Text;
+                dr["city-state-zip"] = txtCity.Text;
+                dr["country"] = txtCountry.Text;
+                dr["class"] = txtClass.Text;
+                dr["latitude"] = txtLatitude.Text;
+                dr["longitude"] = txtLongitude.Text;
+                dr["email"] = txtEmail.Text;
+                dr["birthdate"] = txtBorn.Text;
+                dr["bearing"] = txtBearing.Text;
+                dr["distance"] = txtDistance.Text;
+                dr["us-county"] = txtUSCounty.Text;
+                dr["us-state"] = txtUSState.Text;
+                dr["grid-square"] = txtGridSquare.Text;
+
                 AssociatesController.GetDataSet().AcceptChanges();
             }
             else

@@ -20,9 +20,6 @@ namespace GetHAMContactInfo
             cboOrganization.DataSource = OrganizationController.GetDataSet().Tables[0];
             cboOrganization.DisplayMember = "ID";
             SelectedAssociates.getTable().Clear();
-            lstAssociates.DataSource = SelectedAssociates.getTable();
-            lstAssociates.DisplayMember = "ID";
-            lstAssociates.ContextMenuStrip = ctxAssociateActions;
             InitGridTraffic();
         }
 
@@ -114,77 +111,12 @@ namespace GetHAMContactInfo
 
         }
 
-        private void lstAssociates_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                if (((ListBox) sender).SelectedItem != null)
-                {
-                    ctxAssociateActions.Show(Cursor.Position);
-                }
-            }
-            else
-            {
-                if (((ListBox)sender).SelectedItem != null)
-                {
-                    if(gridTraffic.Rows.Count>0)
-                        SaveTraffic();
-                    m_currentAssociate = ((DataRowView) lstAssociates.SelectedItem).Row["ID"].ToString();
-                    gridTraffic.DataSource = null;
-                    gridTraffic.DataSource = trafficController.GetUserTraffic(((DataRowView) lstAssociates.SelectedItem).Row["ID"].ToString());
-                    if (gridTraffic.Columns["btnPassed"] != null)
-                    {
-                        gridTraffic.Columns.Remove(gridTraffic.Columns["btnPassed"]);
-                    }
-                    DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                    btn.Name = "btnPassed";
-                    btn.Text = "Traffic Passed";
-                    btn.HeaderText = "Click to Pass";
-                    btn.UseColumnTextForButtonValue = true;
-                    gridTraffic.Columns.Add(btn);
-                }
-            }
-        }
+        
 
-        private void SaveTraffic()
-        {
-            foreach (DataGridViewRow dr in gridTraffic.Rows)
-            {
-                if (!dr.IsNewRow)
-                {
-                    trafficController.UpdateTraffic(txtSessionID.Text, m_currentAssociate,
-                                                    (dr.Cells["target"].Value == null)
-                                                        ? ""
-                                                        : dr.Cells["target"].Value.ToString(),
-                                                    (dr.Cells["passed_to"].Value == null)
-                                                        ? ""
-                                                        : dr.Cells["passed_to"].Value.ToString(),
-                                                    (dr.Cells["number"].Value == null)
-                                                        ? ""
-                                                        : dr.Cells["number"].Value.ToString());
-                }
-            }
-            trafficController.SaveDataSet();
-        }
+        
 
-        private void ctxAssociateActions_Opening(object sender, CancelEventArgs e)
-        {
-            
-        }
-
-        private void ctxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (btnBeginEndSession.Text == "End Session")
-            {
-                Form radiogram = new RADIOGRAM2(((DataRowView) lstAssociates.SelectedItem).Row["ID"].ToString(),
-                                                txtSessionID.Text);
-                radiogram.Show();
-            }
-            else
-            {
-                MessageBox.Show("You must bress [Begin Session] before you can add net traffic.");
-            }
-        }
+        
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -198,6 +130,25 @@ namespace GetHAMContactInfo
             {
                 MessageBox.Show(e.RowIndex.ToString());
             }
+        }
+
+      
+
+       
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sessionAssociatesList1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
