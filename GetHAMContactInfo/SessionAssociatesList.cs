@@ -15,11 +15,13 @@ namespace GetHAMContactInfo
         public SessionAssociatesList()
         {
             InitializeComponent();
-            _lastTextBox = txtUser1;
+            _lastUserTxtBox = txtUser1;
+
         }
 
         //private System.Drawing.Point _lastTextBox;
-        private TextBox _lastTextBox;
+        private int _usercount = 1;
+        private TextBox _lastUserTxtBox;
         private int _iAssociateCount = 1;
         private void txtUser1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -32,6 +34,14 @@ namespace GetHAMContactInfo
                                         "Remove Row?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         this.Controls.Remove((TextBox)sender);
+                        _usercount--;
+                        foreach (Control ctrl in this.Controls)
+                        {
+                            if (ctrl.Name == "txtUser" + _usercount.ToString())
+                            {
+                                _lastUserTxtBox = (TextBox)ctrl;
+                            }
+                        }
                     }
                     else
                     {
@@ -42,19 +52,28 @@ namespace GetHAMContactInfo
                 else if (AssociatesController.GetDataSet().Tables[0].Rows.Contains(((TextBox) sender).Text.ToString()))
                 {
 
-                    MessageBox.Show("loading associate data");
+                    DataRow dr = AssociatesController.GetDataSet().Tables[0].Rows.Find(((TextBox) sender).Text);
+                    (this.Controls.Find("txtAssociateName" + _usercount.ToString(), false))[0].Text = dr["name"].ToString();
+                       
+
                     if (
                         MessageBox.Show("Do you have more associates to add to this session?",
                                         "Add Associates?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        TextBox newTxtBox = new TextBox();
-                        newTxtBox.Location = new System.Drawing.Point(_lastTextBox.Location.X,
-                                                                      _lastTextBox.Location.Y + txtUser1.Height + 5);
-                        newTxtBox.Width = _lastTextBox.Width;
-                        newTxtBox.KeyDown += txtUser1_KeyDown;
-                        this.Controls.Add(newTxtBox);
-                        newTxtBox.Focus();
-                        _lastTextBox = newTxtBox;
+                        foreach (Control ctrl in this.Controls)
+                        {
+                            if (ctrl.Name.Contains("txtUser"))
+                            {
+                                if (ctrl.Text == "")
+                                {
+                                    ctrl.Focus();
+                                    return;
+                                }
+                            }
+                        }
+                        AddNewRow();
+                        
+                        
                     }
                     
                 }
@@ -75,6 +94,32 @@ namespace GetHAMContactInfo
                     }
                 }
             }
+        }
+
+        private void AddNewRow()
+        {
+
+            TextBox origUserTextBox = _lastUserTxtBox;
+            //Associate Call sign
+            TextBox newAssociateBox = new TextBox();
+            newAssociateBox.Location = new System.Drawing.Point(_lastUserTxtBox.Location.X,
+                                                          _lastUserTxtBox.Location.Y + txtUser1.Height + 5);
+            newAssociateBox.Width = _lastUserTxtBox.Width;
+            newAssociateBox.KeyDown += txtUser1_KeyDown;
+            newAssociateBox.Name = "txtUser" + (++_usercount).ToString();
+            this.Controls.Add(newAssociateBox);
+            newAssociateBox.Focus();
+            _lastUserTxtBox = newAssociateBox;
+
+            //Associate Name
+            TextBox newAssociateName = new TextBox();
+            newAssociateName.Location = new System.Drawing.Point(txtAssociateName1.Location.X,
+                                                          origUserTextBox.Location.Y + txtUser1.Height + 5);
+            newAssociateName.Width = txtAssociateName1.Width;
+            newAssociateName.Enabled = false;
+            newAssociateName.Name = "txtAssociateName" + (_usercount).ToString();
+            this.Controls.Add(newAssociateName);
+
         }
 
         private void txtUser1_TextChanged(object sender, EventArgs e)

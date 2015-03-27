@@ -40,6 +40,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.sessionAssociatesList1 = new GetHAMContactInfo.SessionAssociatesList();
+            this.txtFrequency = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -60,7 +62,7 @@
             // 
             this.cboOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOrganization.FormattingEnabled = true;
-            this.cboOrganization.Location = new System.Drawing.Point(113, 55);
+            this.cboOrganization.Location = new System.Drawing.Point(115, 40);
             this.cboOrganization.Name = "cboOrganization";
             this.cboOrganization.Size = new System.Drawing.Size(103, 25);
             this.cboOrganization.TabIndex = 4;
@@ -69,16 +71,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 52);
+            this.label1.Location = new System.Drawing.Point(112, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 18);
+            this.label1.Size = new System.Drawing.Size(46, 18);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Band:";
+            this.label1.Text = "Band";
             // 
             // txtSessionID
             // 
             this.txtSessionID.Enabled = false;
-            this.txtSessionID.Location = new System.Drawing.Point(115, 21);
+            this.txtSessionID.Location = new System.Drawing.Point(9, 40);
             this.txtSessionID.Name = "txtSessionID";
             this.txtSessionID.Size = new System.Drawing.Size(100, 24);
             this.txtSessionID.TabIndex = 6;
@@ -97,11 +99,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 18);
+            this.label2.Location = new System.Drawing.Point(6, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 18);
+            this.label2.Size = new System.Drawing.Size(90, 18);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Session ID:";
+            this.label2.Text = "Session ID";
             // 
             // groupBox1
             // 
@@ -134,6 +136,8 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.txtFrequency);
             this.groupBox3.Controls.Add(this.btnBeginEndSession);
             this.groupBox3.Controls.Add(this.cboOrganization);
             this.groupBox3.Controls.Add(this.label1);
@@ -178,6 +182,23 @@
             this.sessionAssociatesList1.TabIndex = 11;
             this.sessionAssociatesList1.Load += new System.EventHandler(this.sessionAssociatesList1_Load);
             // 
+            // txtFrequency
+            // 
+            this.txtFrequency.Enabled = false;
+            this.txtFrequency.Location = new System.Drawing.Point(224, 40);
+            this.txtFrequency.Name = "txtFrequency";
+            this.txtFrequency.Size = new System.Drawing.Size(100, 24);
+            this.txtFrequency.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(221, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 18);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Frequency";
+            // 
             // Session_Command
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -209,6 +230,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtFrequency;
 
     }
 }

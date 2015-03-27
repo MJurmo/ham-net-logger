@@ -104,6 +104,7 @@ namespace GetHAMContactInfo
         private void cboOrganization_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSessionID.Text = SessionsController.GetNewSessionID(((DataRowView)cboOrganization.SelectedItem).Row["ID"].ToString());
+            txtFrequency.Text = SessionsController.GetNewSessionID(((DataRowView)cboOrganization.SelectedItem).Row["Frequency"].ToString());
         }
 
         private void lstAssociates_MouseClick(object sender, MouseEventArgs e)
