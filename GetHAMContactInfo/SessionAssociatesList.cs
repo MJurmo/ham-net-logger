@@ -83,8 +83,27 @@ namespace GetHAMContactInfo
                         MessageBox.Show("This ID is not in your database, would you like to look it up?",
                                         "User not found", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        Form AssociateLookup = new AssociateLookup(((TextBox) sender).Text.ToString());
-                        AssociateLookup.ShowDialog();
+                        Lookup_Results code = Lookup_Results.NOERROR;
+
+                        AssociateLookup AssociateLookup = new AssociateLookup(((TextBox) sender).Text.ToString());
+                        code = AssociateLookup.ShowDialogWithResults();
+                        if (code == Lookup_Results.NOTFOUND)
+                        {
+                            if (
+                                MessageBox.Show(
+                                    "Auto lookup could not find this call sign. Would you like to add it manually?",
+                                    "Add Call Sign", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                AssociateLookup al = new AssociateLookup(((TextBox)sender).Text.ToString());
+                                al._bManualEntry = true;
+                                al.ShowDialogWithResults();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid Entry");
+                                return;
+                            }
+                        }
                         if (
                             !AssociatesController.GetDataSet().Tables[0].Rows.Contains(
                                 ((TextBox) sender).Text.ToString()))

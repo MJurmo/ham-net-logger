@@ -13,6 +13,11 @@ using System.IO;
 
 namespace GetHAMContactInfo
 {
+    public enum Lookup_Results
+    {
+        NOERROR,
+        NOTFOUND
+    }
     public partial class AssociateLookup : Form
     {
         
@@ -25,22 +30,77 @@ namespace GetHAMContactInfo
         private string username, password;
         private bool autorun = false;
         private MessageBox invalidLogin;
+        public Lookup_Results _error;
         //WebClient client = new WebClient();
+        public bool _bManualEntry=false;
+        public Lookup_Results ShowDialogWithResults()
+        {
+            Initialize();
+            base.ShowDialog();
+            return _error;
+        }
+
+        public void Show()
+        {
+            Initialize();
+            base.Show();
+            return; 
+        }
+
+        public DialogResult ShowDialog()
+        {
+            Initialize();
+            return base.ShowDialog();
+        }
+
+        public void Initialize()
+        {
+            textBox1.Text = m_ID;
+            if (!_bManualEntry)
+            {
+                txtUserName.Text = configurationController.GetDataSet().Tables[0].Rows[0]["qrz_username"].ToString();
+                txtPassword.Text = configurationController.GetDataSet().Tables[0].Rows[0]["qrz_password"].ToString();
+                try
+                {
+                    webBrowser1.Navigate("http://www.Qrz.com");
+                    
+                }
+                catch (WebException err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }
+            else
+            {
+                textBox1.Enabled = false;
+                label1.Visible = false;
+                txtUserName.Visible = false;
+                txtPassword.Visible = false;
+                btnLogon.Visible = false;
+                txtName.Enabled = true;
+                txtAddress.Enabled = true;
+                txtCity.Enabled = true;
+                txtCountry.Enabled = true;
+                txtClass.Enabled = true;
+                txtLatitude.Enabled = true;
+                txtLongitude.Enabled = true;
+                txtEmail.Enabled = true;
+                txtBorn.Enabled = true;
+                txtBearing.Enabled = true;
+                txtDistance.Enabled = true;
+                txtUSCounty.Enabled = true;
+                txtUSState.Enabled = true;
+                txtGridSquare.Enabled = true;
+
+            }
+        }
+
         public AssociateLookup(string ID)
         {
             InitializeComponent();
-            txtUserName.Text = configurationController.GetDataSet().Tables[0].Rows[0]["qrz_username"].ToString();
-            txtPassword.Text = configurationController.GetDataSet().Tables[0].Rows[0]["qrz_password"].ToString();
-            try
-            {
-                webBrowser1.Navigate("http://www.Qrz.com");
-                m_ID = ID;
-                textBox1.Text = ID;
-            }
-            catch (WebException err)
-            {
-                MessageBox.Show(err.Message);
-            }
+            m_ID = ID;
+            
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -78,6 +138,9 @@ namespace GetHAMContactInfo
             }
             return elem;
         }
+
+        
+
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -242,6 +305,8 @@ namespace GetHAMContactInfo
             checkLogin();
         }
 
+        
+
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
 
@@ -285,11 +350,12 @@ namespace GetHAMContactInfo
             {
                 if (m_doc.GetElementById("qrzcenter").InnerText.IndexOf("produced no results") > -1)
                 {
-                    MessageBox.Show("Call Sign NOT FOUND!");
+                    _error = Lookup_Results.NOTFOUND;
                     this.Close();
                     return;
                 }
             }
+            
             
             if (gettingname)
             {
