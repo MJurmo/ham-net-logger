@@ -429,5 +429,13 @@ namespace GetHAMContactInfo
             }
 
         }
+
+        private void AssociateLookup_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                button1_Click(sender, e);
+            }
+        }
     }
 }

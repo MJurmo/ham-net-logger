@@ -118,6 +118,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(207, 22);
             this.txtName.TabIndex = 5;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AssociateLookup_KeyDown);
             // 
             // label1
             // 
@@ -458,6 +459,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AssociateLookup";
             this.Text = "HAM Contact Info";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AssociateLookup_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

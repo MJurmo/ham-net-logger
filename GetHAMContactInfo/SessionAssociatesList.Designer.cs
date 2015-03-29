@@ -28,33 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtUser1 = new System.Windows.Forms.TextBox();
-            this.txtAssociateName1 = new System.Windows.Forms.TextBox();
+            this.txtUser_1 = new System.Windows.Forms.TextBox();
+            this.txtAssociateName_1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtUser1
+            // txtUser_1
             // 
-            this.txtUser1.Location = new System.Drawing.Point(13, 12);
-            this.txtUser1.Name = "txtUser1";
-            this.txtUser1.Size = new System.Drawing.Size(66, 22);
-            this.txtUser1.TabIndex = 0;
-            this.txtUser1.TextChanged += new System.EventHandler(this.txtUser1_TextChanged);
-            this.txtUser1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser1_KeyDown);
+            this.txtUser_1.Location = new System.Drawing.Point(13, 12);
+            this.txtUser_1.Name = "txtUser_1";
+            this.txtUser_1.Size = new System.Drawing.Size(66, 22);
+            this.txtUser_1.TabIndex = 0;
+            this.txtUser_1.TextChanged += new System.EventHandler(this.txtUser1_TextChanged);
+            this.txtUser_1.Enter += new System.EventHandler(this.txtUser1_Enter);
+            this.txtUser_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser1_KeyDown);
+            this.txtUser_1.Leave += new System.EventHandler(this.txtUser1_Leave);
             // 
-            // txtAssociateName1
+            // txtAssociateName_1
             // 
-            this.txtAssociateName1.Enabled = false;
-            this.txtAssociateName1.Location = new System.Drawing.Point(85, 12);
-            this.txtAssociateName1.Name = "txtAssociateName1";
-            this.txtAssociateName1.Size = new System.Drawing.Size(169, 22);
-            this.txtAssociateName1.TabIndex = 1;
+            this.txtAssociateName_1.Enabled = false;
+            this.txtAssociateName_1.Location = new System.Drawing.Point(85, 12);
+            this.txtAssociateName_1.Name = "txtAssociateName_1";
+            this.txtAssociateName_1.Size = new System.Drawing.Size(169, 22);
+            this.txtAssociateName_1.TabIndex = 1;
             // 
             // SessionAssociatesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtAssociateName1);
-            this.Controls.Add(this.txtUser1);
+            this.Controls.Add(this.txtAssociateName_1);
+            this.Controls.Add(this.txtUser_1);
             this.Name = "SessionAssociatesList";
             this.Size = new System.Drawing.Size(1309, 254);
             this.ResumeLayout(false);
@@ -64,7 +66,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtUser1;
-        private System.Windows.Forms.TextBox txtAssociateName1;
+        private System.Windows.Forms.TextBox txtUser_1;
+        private System.Windows.Forms.TextBox txtAssociateName_1;
     }
 }

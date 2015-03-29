@@ -15,11 +15,12 @@ namespace GetHAMContactInfo
         public SessionAssociatesList()
         {
             InitializeComponent();
-            _lastUserTxtBox = txtUser1;
+            _lastUserTxtBox = txtUser_1;
 
         }
 
         //private System.Drawing.Point _lastTextBox;
+        private string _currentAssociatCallsign;
         private int _usercount = 1;
         private TextBox _lastUserTxtBox;
         private int _iAssociateCount = 1;
@@ -53,9 +54,14 @@ namespace GetHAMContactInfo
                 {
 
                     DataRow dr = AssociatesController.GetDataSet().Tables[0].Rows.Find(((TextBox) sender).Text);
-                    (this.Controls.Find("txtAssociateName" + _usercount.ToString(), false))[0].Text = dr["name"].ToString();
-                       
-
+                    //MessageBox.Show(((TextBox)sender).Name.IndexOf("_").ToString());
+                    //MessageBox.Show(((TextBox)sender).Name.Length.ToString());
+                    //MessageBox.Show(((TextBox)sender).Name.Substring(((TextBox)sender).Name.IndexOf("_"), ((TextBox)sender).Name.Length - ((TextBox)sender).Name.IndexOf("_")));
+                    //MessageBox.Show(((TextBox)sender).Name.Substring(((TextBox)sender).Name.IndexOf("_"), ((TextBox)sender).Name.Length - ((TextBox)sender).Name.IndexOf("_")));
+                    (this.Controls.Find("txtAssociateName" + ((TextBox)sender).Name.Substring(((TextBox)sender).Name.IndexOf("_"), ((TextBox)sender).Name.Length - ((TextBox)sender).Name.IndexOf("_")), false))[0].Text = dr["name"].ToString();
+                    _currentAssociatCallsign = ((TextBox)sender).Text;
+                    MessageBox.Show(_currentAssociatCallsign);
+                    //((TextBox) sender).Enabled = false;
                     if (
                         MessageBox.Show("Do you have more associates to add to this session?",
                                         "Add Associates?", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -72,13 +78,16 @@ namespace GetHAMContactInfo
                             }
                         }
                         AddNewRow();
-                        
-                        
                     }
+
                     
                 }
                 else
                 {
+                    if (((TextBox) sender).Text != _currentAssociatCallsign)
+                    {
+                        MessageBox.Show("You modified a previously entered call sign!");
+                    }
                     if (
                         MessageBox.Show("This ID is not in your database, would you like to look it up?",
                                         "User not found", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -97,6 +106,7 @@ namespace GetHAMContactInfo
                                 AssociateLookup al = new AssociateLookup(((TextBox)sender).Text.ToString());
                                 al._bManualEntry = true;
                                 al.ShowDialogWithResults();
+                                
                             }
                             else
                             {
@@ -104,12 +114,15 @@ namespace GetHAMContactInfo
                                 return;
                             }
                         }
+                        
                         if (
                             !AssociatesController.GetDataSet().Tables[0].Rows.Contains(
                                 ((TextBox) sender).Text.ToString()))
                         {
                             MessageBox.Show("Could not find associate, please check your call sign and retry.");
+                            return;
                         }
+                        txtUser1_KeyDown(sender, e);
                     }
                 }
             }
@@ -122,21 +135,22 @@ namespace GetHAMContactInfo
             //Associate Call sign
             TextBox newAssociateBox = new TextBox();
             newAssociateBox.Location = new System.Drawing.Point(_lastUserTxtBox.Location.X,
-                                                          _lastUserTxtBox.Location.Y + txtUser1.Height + 5);
+                                                          _lastUserTxtBox.Location.Y + txtUser_1.Height + 5);
             newAssociateBox.Width = _lastUserTxtBox.Width;
             newAssociateBox.KeyDown += txtUser1_KeyDown;
-            newAssociateBox.Name = "txtUser" + (++_usercount).ToString();
+            newAssociateBox.Enter += txtUser1_Enter;
+            newAssociateBox.Name = "txtUser_" + (++_usercount).ToString();
             this.Controls.Add(newAssociateBox);
             newAssociateBox.Focus();
             _lastUserTxtBox = newAssociateBox;
 
             //Associate Name
             TextBox newAssociateName = new TextBox();
-            newAssociateName.Location = new System.Drawing.Point(txtAssociateName1.Location.X,
-                                                          origUserTextBox.Location.Y + txtUser1.Height + 5);
-            newAssociateName.Width = txtAssociateName1.Width;
+            newAssociateName.Location = new System.Drawing.Point(txtAssociateName_1.Location.X,
+                                                          origUserTextBox.Location.Y + txtUser_1.Height + 5);
+            newAssociateName.Width = txtAssociateName_1.Width;
             newAssociateName.Enabled = false;
-            newAssociateName.Name = "txtAssociateName" + (_usercount).ToString();
+            newAssociateName.Name = "txtAssociateName_" + (_usercount).ToString();
             this.Controls.Add(newAssociateName);
 
         }
@@ -144,6 +158,21 @@ namespace GetHAMContactInfo
         private void txtUser1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtUser1_Enter(object sender, EventArgs e)
+        {
+            _currentAssociatCallsign = ((TextBox) sender).Text;
+            MessageBox.Show(_currentAssociatCallsign);
+        }
+
+        private void txtUser1_Leave(object sender, EventArgs e)
+        {
+            if (((TextBox) sender).Text != _currentAssociatCallsign)
+            {
+                MessageBox.Show("take care of editing");
+                ((TextBox) sender).Focus();
+            }
         }
     }
 }
